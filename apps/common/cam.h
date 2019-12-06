@@ -18,7 +18,7 @@ limitations under the License.
 #pragma once
 
 #include "ap_int.h"
-#include "hls/utils/x_hls_utils.h"
+#include "utils/x_hls_utils.h"
 #include <assert.h>
 #include "hls_stream.h"
 

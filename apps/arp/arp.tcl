@@ -14,18 +14,20 @@
 # limitations under the License.
 
 set boost "../../boost"
+set incLibc "/usr/include/x86_64-linux-gnu"
 #set boost "/proj/xsjhdstaff2/stephenn/p4_HEAD/Rodin/HEAD/src/ext/Boost/boost_1_64_0"
 open_project arp_proj
 set_top arp_ingress
-add_files app.cpp -cflags "-std=c++11 -Wall -Wno-unknown-attributes -Wno-unused-variable -Wno-pragmas -D __SDSCC__ -I ../common -I$boost -w"
-add_files -tb main.cpp -cflags "-std=c++11 -Wall -Wno-unknown-attributes -Wno-unused-variable -Wno-pragmas -D __SDSCC__ -I ../common -I$boost -w"
+add_files app.cpp -cflags "-std=c++11 -Wall -Wno-unknown-attributes -Wno-unused-variable -Wno-pragmas -D __SDSCC__ -I ../common -I$boost -I$incLibc -w"
+add_files -tb main.cpp -cflags "-std=c++11 -Wall -Wno-unknown-attributes -Wno-unused-variable -Wno-pragmas -D __SDSCC__ -I ../common -I$boost -I$incLibc -w"
 open_solution "solution" -reset
-set_part { xc7z045ffg900-2 }
+#set_part { xc7z045ffg900-2 }
+set_part {xc7k70tfbv676-1}
 # synthesis directives
 create_clock -period 8.000000
 config_rtl -reset_level low
 # end synthesis directives
 csim_design -compiler clang
 csynth_design
-cosim_design -compiler clang
+#cosim_design -compiler clang
 #export_design -acc
