@@ -73,7 +73,7 @@ void process_packet(ap_uint<48> macAddress, ap_uint<32> ipAddress, int port,
     if(destinationMAC != macAddress &&
        destinationMAC != BROADCAST_MAC) {
 #ifndef __SYNTHESIS__
-        std::cout << "Dropping invalid MAC address: " << macAddress.toString(16, false) << " " << destinationMAC.toString(16, false) << "\n";
+        std::cout << "Dropping invalid MAC address: " << macAddress.to_string(16, false) << " " << destinationMAC.to_string(16, false) << "\n";
         // hexdump_ethernet_frame<4>(buf, len);
 #endif
         valid = false;

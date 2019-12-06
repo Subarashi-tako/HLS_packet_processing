@@ -20,7 +20,6 @@ set libLibc "/usr/lib/x86_64-linux-gnu"
 
 # Setup of flags
 set CFLAGS "-std=c++11 -Wall -Wno-unknown-attributes -Wno-unused-variable -Wno-pragmas -I ../common -I$boost -I$incLibc -w" 
-set LDFLAGS "-L$libLibc -Wl,-rpath=$libLibc"
 
 #set boost "/proj/xsjhdstaff2/stephenn/p4_HEAD/Rodin/HEAD/src/ext/Boost/boost_1_64_0"
 open_project arp_proj
@@ -34,7 +33,7 @@ set_part {xc7k70tfbv676-1}
 create_clock -period 8.000000
 config_rtl -reset_level low
 # end synthesis directives
-csim_design -compiler clang -ldflags $LDFLAGS
+csim_design -compiler clang
 csynth_design
-cosim_design -compiler clang -ldflags $LDFLAGS
+cosim_design -compiler clang
 #export_design -acc
