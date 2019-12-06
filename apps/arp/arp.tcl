@@ -13,13 +13,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Library setting
 set boost "../../boost"
 set incLibc "/usr/include/x86_64-linux-gnu"
+set libLibc "/usr/lib/x86_64-linux-gnu"
+
+# Setup of flags
+set CFLAGS "-std=c++11 -Wall -Wno-unknown-attributes -Wno-unused-variable -Wno-pragmas -I ../common -I$boost -I$incLibc -w" 
+set LDFLAGS "-L$libLibc -Wl,-rpath=$libLibc"
+
 #set boost "/proj/xsjhdstaff2/stephenn/p4_HEAD/Rodin/HEAD/src/ext/Boost/boost_1_64_0"
 open_project arp_proj
 set_top arp_ingress
-add_files app.cpp -cflags "-std=c++11 -Wall -Wno-unknown-attributes -Wno-unused-variable -Wno-pragmas -D __SDSCC__ -I ../common -I$boost -I$incLibc -w"
-add_files -tb main.cpp -cflags "-std=c++11 -Wall -Wno-unknown-attributes -Wno-unused-variable -Wno-pragmas -D __SDSCC__ -I ../common -I$boost -I$incLibc -w"
+add_files app.cpp -cflags $CFLAGS 
+add_files -tb main.cpp -cflags $CFLAGS
 open_solution "solution" -reset
 #set_part { xc7z045ffg900-2 }
 set_part {xc7k70tfbv676-1}
@@ -27,7 +34,7 @@ set_part {xc7k70tfbv676-1}
 create_clock -period 8.000000
 config_rtl -reset_level low
 # end synthesis directives
-csim_design -compiler clang
+csim_design -compiler clang -ldflags $LDFLAGS
 csynth_design
-#cosim_design -compiler clang
+cosim_design -compiler clang -ldflags $LDFLAGS
 #export_design -acc
