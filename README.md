@@ -22,7 +22,15 @@ of existing networking designs in Vivado HLS (e.g. https://github.com/Xilinx/HLx
 https://github.com/fpgasystems/fpga-network-stack) use an RTL-like FSM-oriented coding style.  In constrast,
 these libraries leverage more capabilities of Vivado HLS to automatically insert pipeline stages as
 appropriate.  These libraries are implemented in C++11 using metaprogramming techniques from the `boost::mpl`
-library.  This approach works with current versions of Vivado HLS (e.g. 2018.3), although it is not yet officially supported.
+library.  This approach works with current versions of Vivado HLS (e.g. 2019.2) with some limitations. The current
+implementation was tested on Deabian 10. The Vivado HLS tool doesn't accept linker flags directly (or is better to say that
+I wasn't able to make it work). Therefore, we have to source some environment variables to make the compiler work:
+
+```
+. apps/set_env.sh
+```
+
+After that you can run the synthesis using the Vivado 2019.2 on Debian 10.
 
 # Using the library
 
