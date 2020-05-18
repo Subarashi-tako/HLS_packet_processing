@@ -21,7 +21,8 @@ add_files app.cpp -cflags "-I../common -I../../boost -DHLS_NO_XIL_FPO_LIB -DPLAT
 add_files -tb "main.cpp" -cflags "-I../common -I../../boost -DPLATFORM_zc702 -std=gnu++11 -Wno-unknown-attributes -Wno-multichar -w "
 open_solution "solution" -reset
 #set_part { xc7z020clg484-1 }
-set_part "xczu9eg-ffvb1156-2-i"
+#set_part "xczu9eg-ffvb1156-2-i"
+set_part {xc7k70tfbv676-1}
 # synthesis directives
 create_clock -period 5.000000
 #set_clock_uncertainty 27.0%

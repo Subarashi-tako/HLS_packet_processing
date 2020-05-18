@@ -46,7 +46,7 @@ limitations under the License.
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wmultichar"
 
-#include "hls/utils/x_hls_utils.h"
+#include "utils/x_hls_utils.h"
 #include "assert.h"
 #include <stdio.h>
 #include <iostream>
